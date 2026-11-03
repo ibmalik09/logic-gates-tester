@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Gates Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1>Logic Gates Tester</h1>
+        <p>Explore logic gates by changing their inputs.</p>
+    </header>
+
+    <main class="app">
+        <section class="panel gate-panel" aria-labelledby="gate-heading">
+            <h2 id="gate-heading">Choose a gate</h2>
+            <div class="gate-buttons">
+                <button class="gate-btn active" id="btn-AND" type="button" onclick="selectGate('AND')">AND</button>
+                <button class="gate-btn" id="btn-OR" type="button" onclick="selectGate('OR')">OR</button>
+                <button class="gate-btn" id="btn-NOT" type="button" onclick="selectGate('NOT')">NOT</button>
+                <button class="gate-btn" id="btn-NAND" type="button" onclick="selectGate('NAND')">NAND</button>
+                <button class="gate-btn" id="btn-NOR" type="button" onclick="selectGate('NOR')">NOR</button>
+                <button class="gate-btn" id="btn-XOR" type="button" onclick="selectGate('XOR')">XOR</button>
+                <button class="gate-btn" id="btn-XNOR" type="button" onclick="selectGate('XNOR')">XNOR</button>
+            </div>
+        </section>
+
+        <section class="panel workbench" aria-label="Gate inputs and output">
+            <div class="input-controls">
+                <h2>Inputs</h2>
+                <div class="input-row">
+                    <span class="input-label">Input A</span>
+                    <button class="input-button" id="inputA" type="button" onclick="toggleInput('A')" aria-label="Toggle input A">0</button>
+                </div>
+                <div class="input-row" id="inputBContainer">
+                    <span class="input-label">Input B</span>
+                    <button class="input-button" id="inputB" type="button" onclick="toggleInput('B')" aria-label="Toggle input B">0</button>
+                </div>
+            </div>
+
+            <div class="gate-picture">
+                <h2>Gate diagram</h2>
+                <div id="gateImage" class="gate-image" role="img" aria-label="AND gate diagram"></div>
+            </div>
+
+            <div class="output-panel">
+                <h2>Output</h2>
+                <div id="lamp" class="lamp lamp-off" role="img" aria-label="Output is off"></div>
+                <p id="outputText" aria-live="polite">Output: 0</p>
+            </div>
+        </section>
+
+        <section class="panel table-panel" aria-labelledby="table-heading">
+            <h2 id="table-heading">Truth table</h2>
+            <div class="table-wrap">
+                <table id="truthTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <p id="errorMsg" class="error-message" role="alert"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

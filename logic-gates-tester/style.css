@@ -1,0 +1,243 @@
+/* Set shared colours and sizing for the whole page. */
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #233047;
+    background: #f2f5fa;
+    font-synthesis: none;
+}
+
+/* Make element sizing predictable and remove the browser's page margin. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+}
+
+/* Give the page title the requested navy header colour. */
+.page-header {
+    padding: 28px 20px;
+    color: #ffffff;
+    text-align: center;
+    background: #1F3864;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+}
+
+.page-header p {
+    margin: 8px 0 0;
+    color: #dce7f8;
+}
+
+/* Keep the app centered and comfortable to read on wide screens. */
+.app {
+    width: min(100% - 32px, 1040px);
+    margin: 28px auto;
+}
+
+/* Use matching cards to group the controls and results. */
+.panel {
+    margin-bottom: 20px;
+    padding: 22px;
+    border: 1px solid #dfe6f0;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px rgba(31, 56, 100, 0.06);
+}
+
+.panel h2 {
+    margin: 0 0 16px;
+    color: #1F3864;
+    font-size: 1.15rem;
+}
+
+/* Let the seven gate buttons wrap on narrow screens. */
+.gate-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gate-btn {
+    min-width: 78px;
+    padding: 10px 16px;
+    border: 1px solid #cbd6e5;
+    border-radius: 8px;
+    color: #1F3864;
+    background: #f7f9fc;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.gate-btn:hover {
+    border-color: #1F3864;
+    transform: translateY(-1px);
+}
+
+/* Highlight the selected gate button. */
+.gate-btn.active {
+    border-color: #1F3864;
+    color: #ffffff;
+    background: #1F3864;
+}
+
+/* Arrange inputs, the gate drawing, and output side by side. */
+.workbench {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(180px, 1.2fr) minmax(120px, 0.8fr);
+    align-items: center;
+    gap: 20px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* Ensure the unused B control stays hidden when the NOT gate is selected. */
+.input-row[hidden] {
+    display: none;
+}
+
+.input-label {
+    font-weight: 700;
+}
+
+.input-button {
+    width: 52px;
+    height: 44px;
+    border: 2px solid #2e7dce;
+    border-radius: 9px;
+    color: #1F3864;
+    background: #eaf3ff;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.input-button:hover {
+    background: #dcecff;
+}
+
+.gate-picture {
+    text-align: center;
+}
+
+.gate-image {
+    display: flex;
+    min-height: 120px;
+    align-items: center;
+    justify-content: center;
+}
+
+.gate-image svg {
+    display: block;
+    width: min(100%, 240px);
+    height: auto;
+}
+
+.output-panel {
+    text-align: center;
+}
+
+/* Draw the output indicator as a round lamp. */
+.lamp {
+    width: 58px;
+    height: 58px;
+    margin: 8px auto 10px;
+    border: 4px solid #d4d9e0;
+    border-radius: 50%;
+}
+
+/* Show a green glow when the output is on. */
+.lamp.lamp-on {
+    border-color: #39a96b;
+    background: #56d68b;
+    box-shadow: 0 0 18px rgba(53, 190, 113, 0.55);
+}
+
+.lamp.lamp-off {
+    background: #aeb6c2;
+}
+
+.output-panel p {
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Keep the table readable and allow horizontal scrolling on small screens. */
+.table-wrap {
+    overflow-x: auto;
+}
+
+#truthTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#truthTable th,
+#truthTable td {
+    min-width: 72px;
+    padding: 11px 14px;
+    border: 1px solid #cbd6e5;
+}
+
+#truthTable th {
+    color: #1F3864;
+    background: #edf2f9;
+}
+
+/* Mark the row that corresponds to the current input values. */
+#truthTable tr.current-row td {
+    background: #e4f6ec;
+    font-weight: 700;
+}
+
+.error-message {
+    min-height: 1.25em;
+    margin: 0 2px 20px;
+    color: #c62828;
+    font-weight: 700;
+}
+
+/* Stack the workbench panels on phone-sized screens. */
+@media (max-width: 650px) {
+    .app {
+        width: min(100% - 20px, 520px);
+        margin-top: 18px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .workbench {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .input-controls {
+        width: min(100%, 280px);
+        margin: 0 auto;
+    }
+
+    .gate-buttons {
+        gap: 8px;
+    }
+
+    .gate-btn {
+        flex: 1 1 70px;
+    }
+}
